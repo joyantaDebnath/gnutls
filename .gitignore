@@ -930,3 +930,5 @@ win64
 
 BUILD/
 build/
+/GNUmakefile
+/maint.mk
