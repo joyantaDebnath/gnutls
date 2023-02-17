@@ -927,3 +927,6 @@ tmp-*
 *.trs
 win32
 win64
+
+BUILD/
+build/
