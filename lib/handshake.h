@@ -28,6 +28,30 @@
 # include "record.h"
 # include <assert.h>
 
+// #ifdef INSTRUMENTATION
+struct TLS13state {
+  bool session_id_set;
+  bool random_set;
+  bool handshake_secret_set;
+  bool handshake_key_set;
+  bool handshake_iv_set;
+  bool master_secret_set;
+  bool application_key_set;
+  bool application_iv_set;
+  bool error_status;
+  bool terminated;
+
+  char message_received[100];
+  char message_sent[100];
+  char message_expected[100];
+};
+
+void printTLS13State(void);
+
+extern struct TLS13state curState;
+extern int stateCounter;
+// #endif
+
 /* The following two macros are used in the handshake state machines; the first
  * (IMED_RET) accounts for non-fatal errors and re-entry to current state, while
  * the latter invalidates the handshake on any error (to be used by functions
